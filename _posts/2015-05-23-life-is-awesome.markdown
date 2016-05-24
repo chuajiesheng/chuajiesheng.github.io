@@ -9,7 +9,7 @@ categories: post
 It is about being the best we want to be.
 
 <p>
-	<iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/kXzwOKyGlSA?rel=0" frameborder="0" allowfullscreen>
+	<iframe src="https://www.youtube-nocookie.com/embed/kXzwOKyGlSA?rel=0" frameborder="0" allowfullscreen>
 	</iframe>
 </p>
 
