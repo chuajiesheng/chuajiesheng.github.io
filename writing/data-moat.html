@@ -1,0 +1,99 @@
+---
+layout: article
+title: "The AI Tsunami Is Here. Your Data Is the Seawall."
+description: "Everyone can now build. Not everyone can be trusted with what you hold. A provocation for leaders thinking about what comes after deployment."
+date: 2026-04-01
+permalink: /writing/data-moat/
+---
+
+<div class="kicker">Engineering leadership &nbsp;·&nbsp; Perspective</div>
+
+<h1>The AI Tsunami Is Here. Your Data Is the Seawall.</h1>
+
+<p class="deck">Everyone can now build. Not everyone can be trusted with what you hold. A provocation for leaders thinking about what comes after deployment.</p>
+
+<div class="byline">An engineering leader's perspective &nbsp;·&nbsp; April 2026</div>
+
+<p>Deployment used to be the hard part. Months of infrastructure work, environment configuration, release management ceremonies. Today, a designer exports a zip file from Figma and a junior engineer pushes it live before lunch. The tools have caught up. The constraint has shifted.</p>
+
+<p>So what is the new hard part?</p>
+
+<p>It is not the code. Code is increasingly cheap. AI can write it, refactor it, test it, document it. The new hard part is knowing — precisely and continuously — who is touching your data, what they are taking, and whether they should be.</p>
+
+<div class="pull">"Infrastructure is now a commodity. Data governance is the new differentiator — and the new attack surface."</div>
+
+<h2>The asymmetry nobody is talking about</h2>
+
+<p>Here is something worth sitting with: any team in the world can stand up an LLM agent today. The capability is shared. Open. Cheap. But your operational data — the cases your officers work, the disbursements your systems track, the assessments your staff make — that data belongs only to you. It is your moat. And right now, the wave of new tooling is eroding the fences around it.</p>
+
+<p>We have seen this play out quietly in supply chain incidents across both public and private sectors. The breach is rarely dramatic. It is a misconfigured API. An overly broad service credential. A script written to "just pull a quick report" that ran longer than intended and extracted more than it should have. The data leaves slowly, then all at once.</p>
+
+<div class="three-col">
+  <div class="col-card">
+    <div class="sym">↓</div>
+    <div class="label">Cost of building a frontend. Effectively disposable.</div>
+  </div>
+  <div class="col-card">
+    <div class="sym">→</div>
+    <div class="label">Cost of standing up an AI agent. Shared commodity.</div>
+  </div>
+  <div class="col-card">
+    <div class="sym">↑</div>
+    <div class="label">Value and risk of operational data. Yours alone.</div>
+  </div>
+</div>
+
+<h2>Differentiated quality is not laziness — it is strategy</h2>
+
+<p>The instinct is to apply uniform rigour across everything. But that is not how engineering resources work in practice, and AI-accelerated delivery makes the tension more acute.</p>
+
+<p>A smarter posture: treat quality as a spectrum, not a binary. The frontend is a rendering layer. It will be rewritten, probably more than once. Go easy. The backend is the contract between your systems and the world. Treat it like infrastructure. The data layer is the record of everything your organisation has ever done. Treat it like critical national infrastructure.</p>
+
+<div class="box">
+  <div class="box-label">The quality gradient</div>
+  <p><strong>Frontend</strong> — accept churn. Deploy fast, iterate fast. Figma to production in a day is a feature, not a risk.</p>
+  <p><strong>Backend &amp; APIs</strong> — apply rigour. Code review. Scope controls. Change management. Every endpoint is a door.</p>
+  <p><strong>Data layer</strong> — treat as sovereign. Schema changes require governance. Access changes require audit trails. Volume anomalies require investigation.</p>
+</div>
+
+<h2>The questions your architecture should be able to answer</h2>
+
+<p>Here is a simple test. Can your systems, right now, answer the following?</p>
+
+<p>Who accessed what data in the last 30 days — not which system, but which person, via which credential, touching which records? What was the volume? Was that normal for that person's role and workload? If an officer's behaviour changed — they started pulling significantly more records, or records outside their usual scope — would anyone know?</p>
+
+<p>If the answer is "we would need to dig through logs manually," that is the gap. And as AI tools make it easier for officers to query and extract data with natural language, that gap becomes load-bearing.</p>
+
+<div class="pull">"The question is no longer can someone access the data. The question is: do we know when they did, and what they took with them?"</div>
+
+<h2>Three capabilities worth building toward</h2>
+
+<p>None of these require buying something new. They require making a deliberate architectural choice to build them in.</p>
+
+<p>First: <strong>scoped access tokens with an audit trail.</strong> If you want officers and systems to automate their own workflows — and you should, because the productivity gains are real — you need a way to issue credentials that are scoped to specific data, specific volumes, and specific time windows. A personal access token with no expiry and no scope is not automation infrastructure; it is an open door.</p>
+
+<p>Second: <strong>behavioural observability at the data layer.</strong> You already have API logs. The question is whether you are reading them. Mirroring egress traffic — what data is leaving your services and to whom — gives you the raw material to build a baseline of normal access. Deviations from that baseline are your early warning system. This does not require a graph database or a machine learning model to start. It requires someone to decide it matters.</p>
+
+<p>Third: <strong>a triage model for your systems.</strong> Not every system needs the same level of access scrutiny. A system that handles aggregated, anonymised data is lower risk than one that handles individual case records. Map your estate. Know which systems carry the highest sensitivity. Apply proportionate controls. This is not new thinking — it is risk management — but AI-accelerated deployment means the map needs to be refreshed more frequently than before.</p>
+
+<h2>The sustainability question</h2>
+
+<p>Managed agent platforms — and tools like them — promise to take development from prototype to production in days. That is probably true. What they do not promise is that what you built will be governable, auditable, or operationally sustainable six months later.</p>
+
+<p>Ten times faster development means ten times more things running in production. Each one is a surface. Each one needs to be monitored, updated, and eventually decommissioned. The wave does not crest and recede. It raises the waterline permanently.</p>
+
+<p>The organisations that will navigate this well are not the ones that build the fastest. They are the ones that build a governance layer fast enough to keep pace with what they are deploying.</p>
+
+<div class="box">
+  <div class="box-label">Questions for your next leadership conversation</div>
+  <p>If we issued personal access tokens to every officer today, how would we know what they accessed and whether they should have?</p>
+  <p>Do we have a behavioural baseline for data access — and would we know if something deviated from it?</p>
+  <p>Which of our systems carries the highest data sensitivity, and is its access model proportionate to that risk?</p>
+  <p>When we accelerate deployment with AI tooling, are we accelerating the governance layer at the same rate?</p>
+</div>
+
+<p>The AI wave is real. The productivity gains are real. But every wave that raises capability also raises exposure. The seawall is not the firewall. It is not the penetration test. It is knowing, with confidence, what your data is doing and who is doing it with.</p>
+
+<p>That is an engineering problem. It is also a leadership decision.</p>
+
+<div class="closer">This piece is intended as an opening provocation, not a blueprint. The right architecture will depend on your context, your systems estate, and your risk appetite. The right starting point is agreeing that the question is worth asking.</div>

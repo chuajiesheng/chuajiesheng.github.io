@@ -2,14 +2,27 @@
 layout: landing
 ---
 
-<div class="landing">
-  <h1>{{ site.title }}</h1>
-  <p class="tagline">{{ site.description }}</p>
-  <div class="links">
-    <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
-    <span class="sep">·</span>
-    <a href="https://sg.linkedin.com/in/chuajiesheng" target="_blank" rel="noopener">LinkedIn</a>
-    <span class="sep">·</span>
-    <a href="{{ "/about/" | prepend: site.baseurl }}">About</a>
+<div class="landing-hero">
+  <div class="landing">
+    <h1>{{ site.title }}</h1>
+    <p class="tagline">{{ site.description }}</p>
+    <div class="links">
+      <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
+      <span class="sep">·</span>
+      <a href="https://sg.linkedin.com/in/chuajiesheng" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="sep">·</span>
+      <a href="{{ "/about/" | prepend: site.baseurl }}">About</a>
+    </div>
   </div>
+</div>
+
+<div class="landing-section">
+  <div class="section-label">Writing</div>
+  <ul class="writing-list">
+    <li>
+      <div class="writing-date">April 2026</div>
+      <h2><a href="{{ "/writing/data-moat/" | prepend: site.baseurl }}">The AI Tsunami Is Here. Your Data Is the Seawall.</a></h2>
+      <p class="writing-desc">Everyone can now build. Not everyone can be trusted with what you hold.</p>
+    </li>
+  </ul>
 </div>
