@@ -1,34 +1,12 @@
-<section class="hero is-medium">
-    <div class="hero-head">
-        <header class="nav">
-            <div class="container">
-                <div class="nav-left">
-
-                </div>
-                <div class="nav-right nav-menu site-nav">
-                    <a class="nav-item page-link" href="/">
-                        Home
-                    </a>
-                    {% for my_page in site.pages %}
-                    {% if my_page.title %}
-                    <a class="nav-item page-link" href="{{ my_page.url | prepend: site.baseurl }}">
-                        {{ my_page.title }}
-                    </a>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        </header>
-    </div>
-    <!-- Hero content: will be in the middle -->
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <h1 class="title site-title">
-                {{ site.title }}
-            </h1>
-            <h2 class="subtitle site-subtitle">
-                {{ site.description }}
-            </h2>
-        </div>
-    </div>
-</section>
+<header class="site-header">
+  <div class="wrapper">
+    <a class="home-link" href="{{ "/" | prepend: site.baseurl }}">{{ site.title }}</a>
+    <nav class="page-links">
+      {% for my_page in site.pages %}
+        {% if my_page.title %}
+          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+        {% endif %}
+      {% endfor %}
+    </nav>
+  </div>
+</header>

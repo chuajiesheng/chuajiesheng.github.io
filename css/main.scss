@@ -3,53 +3,162 @@
 ---
 @charset "utf-8";
 
+$font:      'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+$text:      #111;
+$muted:     #888;
+$border:    #e8e8e8;
+$bg:        #fff;
+$max-width: 680px;
+$space:     30px;
 
+*, *::before, *::after { box-sizing: border-box; }
 
-// Our variables
-$base-font-family: 'Open Sans', sans-serif;;
-$base-font-size:   16px;
-$base-font-weight: 300;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+body, h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; padding: 0; }
 
-$spacing-unit:     30px;
-
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
-
-$white:            #ffffff;
-
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
-
-// Width of the content area
-$content-width:    800px;
-
-$on-palm:          600px;
-$on-laptop:        800px;
-
-
-
-// Use media queries like this:
-// @include media-query($on-palm) {
-//     .wrapper {
-//         padding-right: $spacing-unit / 2;
-//         padding-left: $spacing-unit / 2;
-//     }
-// }
-@mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
+body {
+  font-family: $font;
+  font-size: 16px;
+  line-height: 1.65;
+  color: $text;
+  background: $bg;
+  -webkit-font-smoothing: antialiased;
 }
 
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: $border;
+  &:hover { text-decoration-color: $text; }
+}
 
+// ── Landing ──────────────────────────────────────────────
 
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
-        "layout",
-        "syntax-highlighting"
-;
+body.is-landing {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing {
+  text-align: center;
+  padding: 20px;
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 300;
+    letter-spacing: -0.3px;
+    margin-bottom: 6px;
+  }
+
+  .tagline {
+    font-size: 1rem;
+    color: $muted;
+    margin-bottom: 24px;
+  }
+
+  .links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 0.875rem;
+
+    a {
+      color: $muted;
+      text-decoration: none;
+      &:hover { color: $text; }
+    }
+
+    .sep {
+      color: $border;
+      user-select: none;
+    }
+  }
+}
+
+// ── Default layout ────────────────────────────────────────
+
+.wrapper {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 $space;
+}
+
+.site-header {
+  padding: 20px 0;
+  border-bottom: 1px solid $border;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .home-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: $text;
+    &:hover { opacity: 0.6; }
+  }
+
+  .page-links {
+    display: flex;
+    gap: 18px;
+  }
+
+  .page-link {
+    font-size: 0.875rem;
+    color: $muted;
+    text-decoration: none;
+    &:hover { color: $text; }
+  }
+}
+
+.page-content {
+  padding: 60px 0;
+
+  p { margin-bottom: 1.2rem; }
+
+  a {
+    text-decoration: underline;
+    text-decoration-color: $border;
+    &:hover { text-decoration-color: $text; }
+  }
+
+  h1, h2, h3 {
+    font-weight: 500;
+    margin: 1.5rem 0 0.5rem;
+  }
+}
+
+.post-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.post-meta {
+  font-size: 0.85rem;
+  color: $muted;
+  margin-bottom: 40px;
+}
+
+.post-content {
+  p { margin-bottom: 1.2rem; }
+  h2, h3, h4 { font-weight: 500; margin: 1.5rem 0 0.5rem; }
+}
+
+.site-footer {
+  padding: 20px 0;
+  border-top: 1px solid $border;
+  font-size: 0.8rem;
+  color: $muted;
+}
+
+// ── Responsive ────────────────────────────────────────────
+
+@media (max-width: 480px) {
+  .landing h1 { font-size: 1.75rem; }
+}
