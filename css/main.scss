@@ -3,32 +3,49 @@
 ---
 @charset "utf-8";
 
-$font:      'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-$text:      #111;
-$muted:     #888;
-$border:    #e8e8e8;
-$bg:        #fff;
+:root {
+  --ink:     #1a1a18;
+  --muted:   #5a5a56;
+  --faint:   #8a8a85;
+  --surface: #f5f4f0;
+  --line:    rgba(26,26,24,0.12);
+  --bg:      #faf9f6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:     #eeecea;
+    --muted:   #a0a09a;
+    --faint:   #6a6a65;
+    --surface: #222220;
+    --line:    rgba(238,236,234,0.1);
+    --bg:      #161614;
+  }
+}
+
 $max-width: 680px;
-$space:     30px;
+$space:     2rem;
 
 *, *::before, *::after { box-sizing: border-box; }
 
 body, h1, h2, h3, h4, h5, h6, p, ul, ol { margin: 0; padding: 0; }
 
+html { font-size: 16px; }
+
 body {
-  font-family: $font;
-  font-size: 16px;
-  line-height: 1.65;
-  color: $text;
-  background: $bg;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
 
 a {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: $border;
-  &:hover { text-decoration-color: $text; }
+  text-decoration-color: var(--line);
+  &:hover { text-decoration-color: var(--ink); }
 }
 
 // ── Landing ──────────────────────────────────────────────
@@ -45,16 +62,20 @@ body.is-landing {
   padding: 20px;
 
   h1 {
-    font-size: 2.25rem;
-    font-weight: 300;
-    letter-spacing: -0.3px;
-    margin-bottom: 6px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2.75rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
   }
 
   .tagline {
-    font-size: 1rem;
-    color: $muted;
-    margin-bottom: 24px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 1.8rem;
+    letter-spacing: 0.01em;
   }
 
   .links {
@@ -62,16 +83,16 @@ body.is-landing {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    font-size: 0.875rem;
+    font-size: 0.825rem;
 
     a {
-      color: $muted;
+      color: var(--muted);
       text-decoration: none;
-      &:hover { color: $text; }
+      &:hover { color: var(--ink); }
     }
 
     .sep {
-      color: $border;
+      color: var(--line);
       user-select: none;
     }
   }
@@ -86,8 +107,8 @@ body.is-landing {
 }
 
 .site-header {
-  padding: 20px 0;
-  border-bottom: 1px solid $border;
+  padding: 1.4rem 0;
+  border-bottom: 0.5px solid var(--line);
 
   .wrapper {
     display: flex;
@@ -99,66 +120,134 @@ body.is-landing {
     font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
-    color: $text;
-    &:hover { opacity: 0.6; }
+    color: var(--ink);
+    &:hover { color: var(--muted); }
   }
 
   .page-links {
     display: flex;
-    gap: 18px;
+    gap: 20px;
   }
 
   .page-link {
-    font-size: 0.875rem;
-    color: $muted;
+    font-size: 0.825rem;
+    color: var(--muted);
     text-decoration: none;
-    &:hover { color: $text; }
+    &:hover { color: var(--ink); }
   }
 }
 
 .page-content {
-  padding: 60px 0;
+  padding: 4rem 0 6rem;
 
-  p { margin-bottom: 1.2rem; }
-
-  a {
-    text-decoration: underline;
-    text-decoration-color: $border;
-    &:hover { text-decoration-color: $text; }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1.3rem;
   }
 
   h1, h2, h3 {
-    font-weight: 500;
-    margin: 1.5rem 0 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 2rem 0 0.6rem;
+  }
+
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.1rem; }
+
+  a {
+    text-decoration: underline;
+    text-decoration-color: var(--line);
+    &:hover { text-decoration-color: var(--ink); }
   }
 }
 
+// ── Writing index ─────────────────────────────────────────
+
+.writing-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 1.6rem 0;
+    border-bottom: 0.5px solid var(--line);
+
+    &:first-child { border-top: 0.5px solid var(--line); }
+  }
+
+  .writing-date {
+    font-size: 0.78rem;
+    color: var(--faint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+
+    a {
+      text-decoration: none;
+      &:hover { text-decoration: underline; text-decoration-color: var(--ink); }
+    }
+  }
+
+  .writing-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+// ── Post / article ────────────────────────────────────────
+
 .post-title {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 6px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
 }
 
 .post-meta {
-  font-size: 0.85rem;
-  color: $muted;
-  margin-bottom: 40px;
+  font-size: 0.78rem;
+  color: var(--faint);
+  margin-bottom: 3rem;
 }
 
 .post-content {
-  p { margin-bottom: 1.2rem; }
-  h2, h3, h4 { font-weight: 500; margin: 1.5rem 0 0.5rem; }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1.3rem;
+  }
+
+  h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    margin: 2rem 0 0.6rem;
+  }
 }
 
+// ── Footer ────────────────────────────────────────────────
+
 .site-footer {
-  padding: 20px 0;
-  border-top: 1px solid $border;
-  font-size: 0.8rem;
-  color: $muted;
+  padding: 1.4rem 0;
+  border-top: 0.5px solid var(--line);
+  font-size: 0.78rem;
+  color: var(--faint);
 }
 
 // ── Responsive ────────────────────────────────────────────
 
-@media (max-width: 480px) {
-  .landing h1 { font-size: 1.75rem; }
+@media (max-width: 520px) {
+  .landing h1 { font-size: 2.1rem; }
+  .wrapper { padding: 0 1.2rem; }
 }
